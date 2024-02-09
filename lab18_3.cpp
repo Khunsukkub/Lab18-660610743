@@ -10,9 +10,9 @@ using namespace std;
 struct student{
 
     string name;
-	int id;
-	char gender;
-	float gpa;
+    int id;
+    char gender;
+    float gpa;
     
 };
 
@@ -65,12 +65,12 @@ int main(){
 	string textline;
 	
 	while(getline(student_file,textline)){
-		student s;
-
-		char name[100];
+		student s; 
 		
-		sscanf(textline.c_str(), "%[^,]%d %c %f", s.name, &s.id, &s.gender, &s.gpa);
-		s.name = name;
+		char name[100];
+
+        sscanf(textline.c_str(), "%[^,],%d,%c,%f", name, &s.id, &s.gender, &s.gpa);
+        s.name = name;
 
 		allstudents.push_back(s); 		
 	}
@@ -90,7 +90,7 @@ int main(){
 				state = 3;
 			}else{
 			
-				allcourses[allcourses.size() - 1].lecture_list.push_back(textline);
+			    allcourses.back().lecture_list.push_back(textline);
 			    
 			}			
 		}else{
@@ -99,7 +99,7 @@ int main(){
 			}else{
 				student *p = findstudent(allstudents,atof(textline.c_str()));
 				
-				allcourses[allcourses.size() - 1].student_list.push_back(p);
+				 allcourses.back().student_list.push_back(p);
 				
 			}
 		}
